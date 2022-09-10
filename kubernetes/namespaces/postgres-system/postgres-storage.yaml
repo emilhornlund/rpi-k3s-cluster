@@ -1,0 +1,16 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: postgres-pvc
+  namespace: postgres-system
+  labels:
+    app: postgres
+  annotations:
+    volume.beta.kubernetes.io/mount-options: "dir_mode=0777,file_mode=0777,uid=1000,gid=1000"
+spec:
+  storageClassName: longhorn
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
